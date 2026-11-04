@@ -1,0 +1,6 @@
+networkx
+streamlit
+matplotlib
+numpy
+pymupdf
+qrcode[pil]
