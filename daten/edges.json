@@ -1,0 +1,410 @@
+[
+  {
+    "von": "E1_TR00",
+    "nach": "E1_AB02",
+    "distanz": 14.1,
+    "art": "weg"
+  },
+  {
+    "von": "E1_TR00",
+    "nach": "E1_Brücke",
+    "distanz": 24.1,
+    "art": "weg"
+  },
+  {
+    "von": "E1_AB02",
+    "nach": "E1_Brücke",
+    "distanz": 36.8,
+    "art": "weg"
+  },
+  {
+    "von": "E1_AB01",
+    "nach": "E1_Brücke",
+    "distanz": 14.9,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_Zi_Rezeption",
+    "nach": "H3_E1_AB02",
+    "distanz": 67.0,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB02",
+    "nach": "H3_E1_AB01",
+    "distanz": 37.9,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB03",
+    "nach": "H3_E1_KR01",
+    "distanz": 45.9,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_KR01",
+    "nach": "H3_E1_KR02",
+    "distanz": 38.1,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_KR02",
+    "nach": "H3_E1_KR03",
+    "distanz": 12.7,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_KR03",
+    "nach": "H2_E1_KR04",
+    "distanz": 28.6,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E1_KR04",
+    "nach": "H2_E1_AnmeldungNotaufnahme",
+    "distanz": 18.7,
+    "art": "weg"
+  },
+  {
+    "von": "H1_E1_AB06",
+    "nach": "H1_E1_AB05",
+    "distanz": 9.7,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_KR01",
+    "nach": "H6_E1_AB08",
+    "distanz": 49.5,
+    "art": "weg"
+  },
+  {
+    "von": "H6_E1_AB08",
+    "nach": "H6_E1_AUF05",
+    "distanz": 25.0,
+    "art": "weg"
+  },
+  {
+    "von": "H6_E1_AUF05",
+    "nach": "H6_E1_KR05",
+    "distanz": 18.7,
+    "art": "weg"
+  },
+  {
+    "von": "H6_E1_KR05",
+    "nach": "H6_E1_AUF06",
+    "distanz": 19.9,
+    "art": "weg"
+  },
+  {
+    "von": "H6_E1_AUF06",
+    "nach": "H6_E1_AB09",
+    "distanz": 11.4,
+    "art": "weg"
+  },
+  {
+    "von": "H6_E1_AB09",
+    "nach": "H6_E1_KR06",
+    "distanz": 40.7,
+    "art": "weg"
+  },
+  {
+    "von": "E1_HaupteingangRampe",
+    "nach": "H6_E1_KR06",
+    "distanz": 18.8,
+    "art": "weg"
+  },
+  {
+    "von": "E1_HaupteingangRampe",
+    "nach": "E1_Haupteingang",
+    "distanz": 60.4,
+    "art": "weg"
+  },
+  {
+    "von": "H6_E1_KR06",
+    "nach": "H8_E1_AUF07",
+    "distanz": 29.4,
+    "art": "weg"
+  },
+  {
+    "von": "H8_E1_AUF07",
+    "nach": "H8_E1_AUF08",
+    "distanz": 67.0,
+    "art": "weg"
+  },
+  {
+    "von": "H8_E1_AUF08",
+    "nach": "H8_E8_AUF09",
+    "distanz": 61.7,
+    "art": "weg"
+  },
+  {
+    "von": "H8_E8_AUF09",
+    "nach": "H12_E1_AB14",
+    "distanz": 17.0,
+    "art": "weg"
+  },
+  {
+    "von": "H12_E1_AB14",
+    "nach": "H12_E1_AB12",
+    "distanz": 27.2,
+    "art": "weg"
+  },
+  {
+    "von": "H12_E1_AB12",
+    "nach": "H13_E1_AB13",
+    "distanz": 12.7,
+    "art": "weg"
+  },
+  {
+    "von": "H12_E1_AB12",
+    "nach": "H12_E1_AB11",
+    "distanz": 31.9,
+    "art": "weg"
+  },
+  {
+    "von": "E1_AB10",
+    "nach": "E1_EingangOst",
+    "distanz": 24.3,
+    "art": "weg"
+  },
+  {
+    "von": "E1_EingangOst",
+    "nach": "E1_Hauoteingang",
+    "distanz": 258.2,
+    "art": "weg"
+  },
+  {
+    "von": "E1_Hauoteingang",
+    "nach": "E1_Haupteingang",
+    "distanz": 44.3,
+    "art": "weg"
+  },
+  {
+    "von": "E1_Haupteingang",
+    "nach": "H6_E1_KR05",
+    "distanz": 26.2,
+    "art": "weg"
+  },
+  {
+    "von": "E1_Hauoteingang",
+    "nach": "E1_ZI01_EingangWest",
+    "distanz": 295.6,
+    "art": "weg"
+  },
+  {
+    "von": "E1_AB10",
+    "nach": "H12_E1_AB11",
+    "distanz": 48.9,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_Zi_Rezeption",
+    "nach": "E1_AB01",
+    "distanz": 11.9,
+    "art": "weg"
+  },
+  {
+    "von": "E1_ZI01_EingangWest",
+    "nach": "E1_AB02",
+    "distanz": 10.5,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E1_AB04",
+    "nach": "H1_E1_AB05",
+    "distanz": 48.0,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E1_AB04",
+    "nach": "H2_E1_KR04",
+    "distanz": 12.5,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E1_AB04",
+    "nach": "H2_E1_AusgangGebäude4",
+    "distanz": 16.3,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB02#2",
+    "nach": "H3_E1_AB03#2",
+    "distanz": 14.0,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB03#2",
+    "nach": "H3_E1_TR02",
+    "distanz": 4.8,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB03#2",
+    "nach": "H3_E1_AB03",
+    "distanz": 12.3,
+    "art": "weg"
+  },
+  {
+    "von": "H1_E1_AB06",
+    "nach": "H1_E1_AB07",
+    "distanz": 41.5,
+    "art": "weg"
+  },
+  {
+    "von": "H1_E1_EIngangHaus1",
+    "nach": "H1_E1_AB07",
+    "distanz": 40.6,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB02",
+    "nach": "H3_E1_TR01",
+    "distanz": 8.3,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB01",
+    "nach": "H3_E1_AB02#2",
+    "distanz": 30.6,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB02#2",
+    "nach": "H3_E1_AUF02",
+    "distanz": 4.4,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E2_AB08",
+    "nach": "H3_E2_AB09",
+    "distanz": 8.8,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E2_AB09",
+    "nach": "H2_E2_AB10",
+    "distanz": 32.5,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E2_AB10",
+    "nach": "H2_E2_AB11",
+    "distanz": 11.5,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E2_AB11",
+    "nach": "H2_E2_AUF34",
+    "distanz": 36.4,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E2_AB11",
+    "nach": "H2_E2_AUF33",
+    "distanz": 7.1,
+    "art": "weg"
+  },
+  {
+    "von": "H2_E2_TR05",
+    "nach": "H2_E2_AB10",
+    "distanz": 6.5,
+    "art": "weg"
+  },
+  {
+    "von": "H12_E2_AB18",
+    "nach": "H12_E2_AB17",
+    "distanz": 31.1,
+    "art": "weg"
+  },
+  {
+    "von": "H12_E2_AB19",
+    "nach": "H12_E2_AB17",
+    "distanz": 15.9,
+    "art": "weg"
+  },
+  {
+    "von": "H12_E2_AB19",
+    "nach": "H8_E2_AUF09",
+    "distanz": 11.9,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E2_AB01",
+    "nach": "H3_E2_TR01",
+    "distanz": 20.9,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E2_AB06",
+    "nach": "H3_E2_KR02",
+    "distanz": 34.6,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E2_AB06",
+    "nach": "H3_E2_TR04",
+    "distanz": 4.3,
+    "art": "weg"
+  },
+  {
+    "von": "H12_E2_AB17",
+    "nach": "H12_E2_TR06",
+    "distanz": 6.8,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AUF01",
+    "nach": "H3_E2_AUF01",
+    "distanz": 30,
+    "art": "aufzug"
+  },
+  {
+    "von": "H3_E1_TR01",
+    "nach": "H3_E2_TR01",
+    "distanz": 40,
+    "art": "treppe"
+  },
+  {
+    "von": "H3_E2_TR01",
+    "nach": "H3_E2_TR01#2",
+    "distanz": 40,
+    "art": "treppe"
+  },
+  {
+    "von": "H3_E1_AUF02",
+    "nach": "H3_E2_AUF02",
+    "distanz": 30,
+    "art": "aufzug"
+  },
+  {
+    "von": "H3_E1_TR02",
+    "nach": "H3_E2_TR02",
+    "distanz": 40,
+    "art": "treppe"
+  },
+  {
+    "von": "H6_E1_AUF05",
+    "nach": "H6_E2_AUF05",
+    "distanz": 30,
+    "art": "aufzug"
+  },
+  {
+    "von": "H6_E1_AUF06",
+    "nach": "H6_E2_AUF06",
+    "distanz": 30,
+    "art": "aufzug"
+  },
+  {
+    "von": "H8_E1_AUF08",
+    "nach": "H8_E2_AUF08",
+    "distanz": 30,
+    "art": "aufzug"
+  },
+  {
+    "von": "H8_E2_AUF09",
+    "nach": "H8_E8_AUF09",
+    "distanz": 30,
+    "art": "aufzug"
+  }
+]
