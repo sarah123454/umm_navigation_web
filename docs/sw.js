@@ -1,10 +1,15 @@
 // sw.js – macht die App bei schlechtem Netz nutzbar.
 // Strategie "erst Netz, dann Speicher": Neue Daten kommen sofort an,
 // ohne Netz wird die zuletzt geladene Version aus dem Speicher genommen.
-const SPEICHER = "umm-navigation-v1";
+// Bei jeder Änderung an Daten oder Lageplan die Nummer erhöhen!
+const SPEICHER = "umm-navigation-v2";
 
 self.addEventListener("install", () => self.skipWaiting());
-self.addEventListener("activate", e => e.waitUntil(self.clients.claim()));
+self.addEventListener("activate", e => e.waitUntil(
+  caches.keys()
+    .then(namen => Promise.all(namen.filter(n => n !== SPEICHER).map(n => caches.delete(n))))
+    .then(() => self.clients.claim())
+));
 
 self.addEventListener("fetch", e => {
   const req = e.request;

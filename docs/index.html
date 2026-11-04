@@ -173,6 +173,9 @@
 // ======================================================================
 const GERADEAUS_BIS = 30;          // Grad: darunter zählt es als geradeaus
 const FAKTOR_AUSSEN = 3;           // "Überdacht": Außenwege zählen so viel länger
+const AUFZUG_STRAFE = 60;          // gefühlte Meter pro Aufzugfahrt (nur für die Routenwahl)
+const TREPPE_STRAFE = 40;          // gefühlte Meter pro Treppenwechsel
+const NUR_ETAGEN = ["1"];          // nur diese Etagen laden ("1" = EG); [] = alle Etagen
 const LINIENBREITE = 9, MARKER_RADIUS = 20;          // Promille der Ausschnittsbreite
 const ZOOM_RAND = 0.25, ZOOM_RAND_MIN = 0.03, ZOOM_MIN = 0.12;
 const MARKER_ABSTAND = 3.0, MARKER_MIN_FAKTOR = 0.45;
@@ -213,6 +216,7 @@ async function start() {
 }
 
 function baueGraph(orte, kanten) {
+  if (NUR_ETAGEN.length) orte = orte.filter(o => NUR_ETAGEN.includes(String(o.etage)));
   for (const o of orte) { K.set(o.id, o); NACHBARN.set(o.id, []); }
   for (const e of kanten) {
     if (!K.has(e.von) || !K.has(e.nach)) continue;
@@ -339,10 +343,14 @@ function optionen() {
   return { rollstuhl: $("opt-rollstuhl").checked, dach: $("opt-dach").checked };
 }
 
-function gewicht(kante, opt) {
+function gewicht(kante, opt, vonId, nachId) {
   if (opt.rollstuhl && kante.barrierefrei === false) return null;     // gesperrt
   let w = Number(kante.meter) || 0;
   if (opt.dach && kante.bereich === "aussen") w *= FAKTOR_AUSSEN;
+  // Strafe für Stockwerkwechsel: möglichst auf einer Ebene bleiben
+  const von = K.get(vonId), nach = K.get(nachId);
+  if (von && nach && von.etage !== nach.etage)
+    w += (von.typ === "treppe" || nach.typ === "treppe") ? TREPPE_STRAFE : AUFZUG_STRAFE;
   return w;
 }
 
@@ -356,7 +364,7 @@ function dijkstra(startId, opt) {
     if (fertig.has(u)) continue;
     fertig.add(u);
     for (const { nach, kante } of NACHBARN.get(u) || []) {
-      const w = gewicht(kante, opt);
+      const w = gewicht(kante, opt, u, nach);
       if (w === null || fertig.has(nach)) continue;
       const neu = dist.get(u) + w;
       if (!dist.has(nach) || neu < dist.get(nach)) { dist.set(nach, neu); vor.set(nach, u); offen.push(nach); }
