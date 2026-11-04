@@ -1,1010 +1,284 @@
 [
   {
-    "von": "E1_TR00",
-    "nach": "E1_AUF50",
-    "meter": 14.1,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_TR00",
-    "nach": "E1_Brücke",
-    "meter": 24.1,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_AUF50",
-    "nach": "E1_Brücke",
-    "meter": 36.8,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_AB01",
-    "nach": "E1_Brücke",
-    "meter": 14.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E1_Zi_Rezeption",
-    "nach": "H3_E1_AB023",
-    "meter": 67.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E1_AB023",
+    "von": "H3_E1_AB02",
     "nach": "H3_E1_AB01",
-    "meter": 37.9,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 30.6,
+    "art": "weg"
   },
   {
     "von": "H3_E1_AB03",
     "nach": "H3_E1_KR01",
-    "meter": 45.9,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 58.2,
+    "art": "weg"
   },
   {
     "von": "H3_E1_KR01",
     "nach": "H3_E1_KR02",
-    "meter": 38.1,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 38.1,
+    "art": "weg"
   },
   {
     "von": "H3_E1_KR02",
     "nach": "H3_E1_KR03",
-    "meter": 12.7,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 12.7,
+    "art": "weg"
   },
   {
     "von": "H3_E1_KR03",
     "nach": "H2_E1_KR04",
-    "meter": 28.6,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E1_KR04",
-    "nach": "H2_E1_AnmeldungNotaufnahme",
-    "meter": 18.7,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 28.6,
+    "art": "weg"
   },
   {
     "von": "H1_E1_AB06",
     "nach": "H1_E1_AB05",
-    "meter": 9.7,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 9.7,
+    "art": "weg"
   },
   {
     "von": "H3_E1_KR01",
     "nach": "H6_E1_AB08",
-    "meter": 49.5,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 49.5,
+    "art": "weg"
   },
   {
     "von": "H6_E1_AB08",
     "nach": "H6_E1_AUF05",
-    "meter": 25.0,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 25.0,
+    "art": "weg"
   },
   {
     "von": "H6_E1_AUF05",
     "nach": "H6_E1_KR05",
-    "meter": 18.7,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 18.7,
+    "art": "weg"
   },
   {
     "von": "H6_E1_KR05",
     "nach": "H6_E1_AUF06",
-    "meter": 19.9,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 19.9,
+    "art": "weg"
   },
   {
     "von": "H6_E1_AUF06",
     "nach": "H6_E1_AB09",
-    "meter": 11.4,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 11.4,
+    "art": "weg"
   },
   {
     "von": "H6_E1_AB09",
     "nach": "H6_E1_KR06",
-    "meter": 40.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_HaupteingangRampe",
-    "nach": "H6_E1_KR06",
-    "meter": 18.8,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_HaupteingangRampe",
-    "nach": "E1_Haupteingang",
-    "meter": 60.4,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 40.7,
+    "art": "weg"
   },
   {
     "von": "H6_E1_KR06",
     "nach": "H8_E1_AUF07",
-    "meter": 29.4,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 29.4,
+    "art": "weg"
   },
   {
     "von": "H8_E1_AUF07",
     "nach": "H8_E1_AUF08",
-    "meter": 67.0,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 67.0,
+    "art": "weg"
   },
   {
     "von": "H8_E1_AUF08",
-    "nach": "H8_E1_AUF09",
-    "meter": 61.7,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "nach": "H8_E8_AUF09",
+    "distanz": 61.7,
+    "art": "weg"
   },
   {
-    "von": "H8_E1_AUF09",
+    "von": "H8_E8_AUF09",
     "nach": "H12_E1_AB14",
-    "meter": 17.0,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 17.0,
+    "art": "weg"
   },
   {
     "von": "H12_E1_AB14",
     "nach": "H12_E1_AB12",
-    "meter": 27.2,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 27.2,
+    "art": "weg"
   },
   {
     "von": "H12_E1_AB12",
     "nach": "H13_E1_AB13",
-    "meter": 12.7,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 12.7,
+    "art": "weg"
   },
   {
     "von": "H12_E1_AB12",
     "nach": "H12_E1_AB11",
-    "meter": 31.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_Haupteingang",
-    "nach": "H6_E1_KR05",
-    "meter": 26.2,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_AB10",
-    "nach": "H12_E1_AB11",
-    "meter": 48.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E1_Zi_Rezeption",
-    "nach": "E1_AB01",
-    "meter": 11.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_ZI01_EingangWest",
-    "nach": "E1_AUF50",
-    "meter": 10.5,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 31.9,
+    "art": "weg"
   },
   {
     "von": "H2_E1_AB04",
     "nach": "H1_E1_AB05",
-    "meter": 48.0,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 48.0,
+    "art": "weg"
   },
   {
     "von": "H2_E1_AB04",
     "nach": "H2_E1_KR04",
-    "meter": 12.5,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E1_AB04",
-    "nach": "H2_E1_AusgangGebäude4",
-    "meter": 16.3,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 12.5,
+    "art": "weg"
   },
   {
     "von": "H3_E1_AB02",
-    "nach": "H3_E1_AB33",
-    "meter": 14.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E1_AB33",
-    "nach": "H3_E1_TR02",
-    "meter": 4.8,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E1_AB33",
     "nach": "H3_E1_AB03",
-    "meter": 12.3,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 14.0,
+    "art": "weg"
+  },
+  {
+    "von": "H3_E1_AB03",
+    "nach": "H3_E1_TR02",
+    "distanz": 4.8,
+    "art": "weg"
   },
   {
     "von": "H1_E1_AB06",
     "nach": "H1_E1_AB07",
-    "meter": 41.5,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 41.5,
+    "art": "weg"
   },
   {
-    "von": "H1_E1_EingangHaus1",
-    "nach": "H1_E1_AB07",
-    "meter": 40.6,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E1_AB023",
+    "von": "H3_E1_AB02",
     "nach": "H3_E1_TR01",
-    "meter": 8.3,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E1_AB01",
-    "nach": "H3_E1_AB02",
-    "meter": 30.6,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 63.7,
+    "art": "weg"
   },
   {
     "von": "H3_E1_AB02",
     "nach": "H3_E1_AUF02",
-    "meter": 4.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E1_AB13",
-    "nach": "H13_E1_AB13",
-    "meter": 9.2,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E1_AB13",
-    "nach": "H11_E1_ZI11_Haus11",
-    "meter": 15.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_WegHaupteingang",
-    "nach": "E1_ZI2_EingangOst",
-    "meter": 258.2,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_Haupteingang",
-    "nach": "E1_WegHaupteingang",
-    "meter": 44.3,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_AB10",
-    "nach": "E1_ZI2_EingangOst",
-    "meter": 24.3,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E1_WegHaupteingang",
-    "nach": "E1_ZI01_EingangWest",
-    "meter": 295.6,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 4.4,
+    "art": "weg"
   },
   {
     "von": "H3_E2_AB08",
     "nach": "H3_E2_AB09",
-    "meter": 8.8,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 8.8,
+    "art": "weg"
   },
   {
     "von": "H3_E2_AB09",
     "nach": "H2_E2_AB10",
-    "meter": 32.5,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 32.5,
+    "art": "weg"
   },
   {
     "von": "H2_E2_AB10",
     "nach": "H2_E2_AB11",
-    "meter": 11.5,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 11.5,
+    "art": "weg"
   },
   {
     "von": "H2_E2_AB11",
     "nach": "H2_E2_AUF34",
-    "meter": 36.4,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 36.4,
+    "art": "weg"
   },
   {
     "von": "H2_E2_AB11",
     "nach": "H2_E2_AUF33",
-    "meter": 7.1,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 7.1,
+    "art": "weg"
   },
   {
     "von": "H2_E2_TR05",
     "nach": "H2_E2_AB10",
-    "meter": 6.5,
-    "barrierefrei": false,
-    "bereich": "innen"
+    "distanz": 6.5,
+    "art": "weg"
   },
   {
     "von": "H12_E2_AB18",
     "nach": "H12_E2_AB17",
-    "meter": 31.1,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 31.1,
+    "art": "weg"
   },
   {
     "von": "H12_E2_AB19",
     "nach": "H12_E2_AB17",
-    "meter": 15.9,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 15.9,
+    "art": "weg"
   },
   {
     "von": "H12_E2_AB19",
     "nach": "H8_E2_AUF09",
-    "meter": 11.9,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 11.9,
+    "art": "weg"
   },
   {
     "von": "H3_E2_AB01",
-    "nach": "H3_E2_AB33",
-    "meter": 20.9,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "nach": "H3_E2_TR01",
+    "distanz": 72.3,
+    "art": "weg"
   },
   {
     "von": "H3_E2_AB06",
     "nach": "H3_E2_KR02",
-    "meter": 34.6,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 34.6,
+    "art": "weg"
   },
   {
     "von": "H3_E2_AB06",
     "nach": "H3_E2_TR04",
-    "meter": 4.3,
-    "barrierefrei": false,
-    "bereich": "innen"
+    "distanz": 4.3,
+    "art": "weg"
   },
   {
     "von": "H12_E2_AB17",
     "nach": "H12_E2_TR06",
-    "meter": 6.8,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E2_AB18",
-    "nach": "H11_E2_AB19",
-    "meter": 9.2,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H11_E2_AB19",
-    "nach": "H11_E2_AB20",
-    "meter": 14.1,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E2_AB06",
-    "nach": "H3_E2_AB04",
-    "meter": 12.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E2_AB06",
-    "nach": "H3_E2_AUF04",
-    "meter": 4.5,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E2_AB12",
-    "nach": "H2_E2_AB20",
-    "meter": 42.8,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E2_AB20",
-    "nach": "H3_E2_AB04",
-    "meter": 7.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E2_AB20",
-    "nach": "H2_E2_TR15",
-    "meter": 8.5,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E2_AB21",
-    "nach": "H3_E2_AB08",
-    "meter": 36.5,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E2_AB21",
-    "nach": "H3_E2_KR02",
-    "meter": 28.2,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E2_AB01",
-    "nach": "H3_E2_AB02",
-    "meter": 67.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E2_AB02",
-    "nach": "H3_E2_AB03",
-    "meter": 37.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E2_AB07",
-    "nach": "H3_E2_AB03",
-    "meter": 30.6,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E2_AB07",
-    "nach": "H3_E2_AB05",
-    "meter": 14.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E2_AB05",
-    "nach": "H3_E2_KR02",
-    "meter": 10.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E2_AUF06",
-    "nach": "H6_E2_AB14",
-    "meter": 11.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E2_AB14",
-    "nach": "H6_E2_AB15",
-    "meter": 40.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E2_AB15",
-    "nach": "H8_E2_AUF08",
-    "meter": 29.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H8_E2_AB16",
-    "nach": "H8_E2_AUF08",
-    "meter": 67.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H8_E2_AB16",
-    "nach": "H8_E2_AUF09",
-    "meter": 61.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E2_AUF05",
-    "nach": "H6_E2_AB13",
-    "meter": 18.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E2_AB13",
-    "nach": "H6_E2_AUF06",
-    "meter": 19.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB08",
-    "nach": "H3_E0_AB09",
-    "meter": 8.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB09",
-    "nach": "H2_E0_AB10",
-    "meter": 32.6,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AB10",
-    "nach": "H2_E0_AB11",
-    "meter": 11.5,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AB11",
-    "nach": "H2_E0_AUF34",
-    "meter": 36.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AB11",
-    "nach": "H2_E0_AUF33",
-    "meter": 7.2,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_TR05",
-    "nach": "H2_E0_AB10",
-    "meter": 6.5,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E0_AB18",
-    "nach": "H12_E0_AB17",
-    "meter": 31.1,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E0_AB19",
-    "nach": "H12_E0_AB17",
-    "meter": 16.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E0_AB19",
-    "nach": "H8_E0_AUF09",
-    "meter": 12.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB06",
-    "nach": "H3_E0_KR02",
-    "meter": 34.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB06",
-    "nach": "H3_E0_TR04",
-    "meter": 4.3,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E0_AB17",
-    "nach": "H12_E0_TR06",
-    "meter": 6.8,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E0_AB18",
-    "nach": "H11_E0_AB19",
-    "meter": 9.3,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H11_E0_AB19",
-    "nach": "H11_E0_AB20",
-    "meter": 14.1,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB06",
-    "nach": "H3_E0_AB04",
-    "meter": 12.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB06",
-    "nach": "H3_E0_AUF04",
-    "meter": 4.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AB12",
-    "nach": "H2_E0_AB20",
-    "meter": 42.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AB20",
-    "nach": "H3_E0_AB04",
-    "meter": 7.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AB20",
-    "nach": "H2_E0_TR15",
-    "meter": 8.4,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AB21",
-    "nach": "H3_E0_AB08",
-    "meter": 36.5,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AB21",
-    "nach": "H3_E0_KR02",
-    "meter": 28.2,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB02",
-    "nach": "H3_E0_AB03",
-    "meter": 37.9,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB07",
-    "nach": "H3_E0_AB03",
-    "meter": 30.5,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB07",
-    "nach": "H3_E0_AB05",
-    "meter": 14.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB05",
-    "nach": "H3_E0_KR02",
-    "meter": 10.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AUF06",
-    "nach": "H6_E0_AB14",
-    "meter": 11.3,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AB14",
-    "nach": "H6_E0_AB15",
-    "meter": 40.8,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AB15",
-    "nach": "H8_E0_AUF08",
-    "meter": 29.4,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H8_E0_AB16",
-    "nach": "H8_E0_AUF08",
-    "meter": 67.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H8_E0_AB16",
-    "nach": "H8_E0_AUF09",
-    "meter": 61.6,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AUF05",
-    "nach": "H6_E0_AB13",
-    "meter": 18.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AB13",
-    "nach": "H6_E0_AUF06",
-    "meter": 20.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AB12",
-    "nach": "H6_E0_AUF05",
-    "meter": 25.0,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB02",
-    "nach": "H3_E0_TR01",
-    "meter": 8.3,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB02",
-    "nach": "H3_E0_AUF01",
-    "meter": 4.7,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB49",
-    "nach": "H3_E0_AB35",
-    "meter": 20.6,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AB35",
-    "nach": "H3_E0_AB02",
-    "meter": 43.3,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E0_AUF50",
-    "nach": "H3_E0_AB49",
-    "meter": 47.1,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "E0_AUF50",
-    "nach": "E1_AUF50",
-    "meter": 3.3,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AUF01",
-    "nach": "H3_E1_AUF01",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 6.8,
+    "art": "weg"
   },
   {
     "von": "H3_E1_AUF01",
     "nach": "H3_E2_AUF01",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_TR01",
-    "nach": "H3_E1_TR01",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
+    "distanz": 30,
+    "art": "aufzug"
   },
   {
     "von": "H3_E1_TR01",
     "nach": "H3_E2_TR01",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AUF02",
-    "nach": "H3_E1_AUF02",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 40,
+    "art": "treppe"
   },
   {
     "von": "H3_E1_AUF02",
     "nach": "H3_E2_AUF02",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_TR02",
-    "nach": "H3_E1_TR02",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
+    "distanz": 30,
+    "art": "aufzug"
   },
   {
     "von": "H3_E1_TR02",
     "nach": "H3_E2_TR02",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AUF05",
-    "nach": "H6_E1_AUF05",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 40,
+    "art": "treppe"
   },
   {
     "von": "H6_E1_AUF05",
     "nach": "H6_E2_AUF05",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H6_E0_AUF06",
-    "nach": "H6_E1_AUF06",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 30,
+    "art": "aufzug"
   },
   {
     "von": "H6_E1_AUF06",
     "nach": "H6_E2_AUF06",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H8_E0_AUF08",
-    "nach": "H8_E1_AUF08",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 30,
+    "art": "aufzug"
   },
   {
     "von": "H8_E1_AUF08",
     "nach": "H8_E2_AUF08",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
+    "distanz": 30,
+    "art": "aufzug"
   },
   {
-    "von": "H8_E0_AUF09",
-    "nach": "H8_E1_AUF09",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H8_E1_AUF09",
-    "nach": "H8_E2_AUF09",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_AUF04",
-    "nach": "H3_E2_AUF04",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H3_E0_TR04",
-    "nach": "H3_E2_TR04",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_TR05",
-    "nach": "H2_E2_TR05",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AUF33",
-    "nach": "H2_E2_AUF33",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_AUF34",
-    "nach": "H2_E2_AUF34",
-    "meter": 15,
-    "barrierefrei": true,
-    "bereich": "innen"
-  },
-  {
-    "von": "H12_E0_TR06",
-    "nach": "H12_E2_TR06",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
-  },
-  {
-    "von": "H2_E0_TR15",
-    "nach": "H2_E2_TR15",
-    "meter": 20,
-    "barrierefrei": false,
-    "bereich": "innen"
+    "von": "H8_E2_AUF09",
+    "nach": "H8_E8_AUF09",
+    "distanz": 30,
+    "art": "aufzug"
   }
 ]
