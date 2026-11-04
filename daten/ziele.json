@@ -1,0 +1,13 @@
+{
+  "eingaenge": [
+    {"knoten": "Haupteingang", "anzeige": "Haupteingang"},
+    {"knoten": "EingangWest",  "anzeige": "Eingang West"},
+    {"knoten": "EingangOst",   "anzeige": "Eingang Ost"}
+  ],
+  "ziele": [
+    {"knoten": "Haus12", "anzeige": "Haus 12", "kategorie": "Haus"},
+    {"knoten": "Haus11", "anzeige": "Haus 11", "kategorie": "Haus"},
+    {"knoten": "NotaufnahmeErwachsene", "anzeige": "Notaufnahme Erwachsene", "kategorie": "Station / Einrichtung"},
+    {"knoten": "Rezeption03", "anzeige": "Rezeption Haus 3", "kategorie": "Station / Einrichtung"}
+  ]
+}
