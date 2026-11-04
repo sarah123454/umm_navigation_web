@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b5394">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+<title>UMM Campus-Navigation</title>
+<style>
+  :root {
+    --blau: #0b5394; --blau-hell: #e8f0f9; --text: #1b1f24; --grau: #5f6b7a;
+    --rand: #d5dbe3; --flaeche: #ffffff; --hinter: #f4f6f9; --rot: #c8102e;
+    --gruen: #0a8a3a; --orange: #e07000; --radius: 12px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--hinter); color: var(--text);
+         font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  body.gross { font-size: 20px; --grau: #2b333d; --rand: #8a96a6; }
+  header { background: var(--flaeche); border-bottom: 1px solid var(--rand); }
+  .kopf { max-width: 760px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
+  .kopf img { height: 40px; width: auto; }
+  .kopf h1 { font-size: 1.15rem; margin: 0; line-height: 1.25; }
+  .kopf small { display: block; color: var(--grau); font-weight: 400; font-size: .8rem; }
+  main { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
+  .karte { background: var(--flaeche); border: 1px solid var(--rand); border-radius: var(--radius);
+           padding: 16px; margin-bottom: 14px; }
+  .karte h2 { font-size: 1rem; margin: 0 0 10px; }
+  label.feld { display: block; font-weight: 600; margin: 10px 0 6px; }
+  input[type=search], select { width: 100%; font: inherit; padding: 10px 12px; border: 1px solid var(--rand);
+           border-radius: 10px; background: #fff; color: var(--text); min-height: 46px; }
+  input[type=search]:focus, select:focus, button:focus-visible { outline: 3px solid #7fb0e6; outline-offset: 1px; }
+  .hinweis { color: var(--grau); font-size: .85rem; margin-top: 4px; min-height: 1.2em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rand); border-radius: 999px;
+          padding: 8px 14px; background: #fff; cursor: pointer; user-select: none; min-height: 44px; }
+  .chip input { width: 18px; height: 18px; margin: 0; accent-color: var(--blau); }
+  .chip:has(input:checked) { background: var(--blau-hell); border-color: var(--blau); }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: var(--hinter);
+          padding: 4px; border-radius: 12px; margin-bottom: 4px; }
+  .tabs button { border: 0; background: transparent; padding: 10px; border-radius: 9px; font: inherit;
+                 font-weight: 600; color: var(--grau); cursor: pointer; min-height: 44px; }
+  .tabs button[aria-selected=true] { background: #fff; color: var(--blau); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .btn { display: inline-flex; justify-content: center; align-items: center; gap: 6px; border: 0; border-radius: 10px;
+         font: inherit; font-weight: 600; padding: 12px 18px; cursor: pointer; min-height: 48px; }
+  .btn.haupt { background: var(--blau); color: #fff; width: 100%; font-size: 1.05rem; }
+  .btn.zweit { background: #fff; color: var(--blau); border: 1px solid var(--rand); }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .info { background: var(--blau-hell); border-left: 4px solid var(--blau); padding: 10px 12px; border-radius: 8px; }
+  .warn { background: #fff4e5; border-left: 4px solid var(--orange); padding: 10px 12px; border-radius: 8px; margin-top: 10px; }
+  .fehler { background: #fdecee; border-left: 4px solid var(--rot); padding: 10px 12px; border-radius: 8px; }
+  .erfolg { background: #e7f6ec; border-left: 4px solid var(--gruen); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; }
+  .klein-link { background: none; border: 0; color: var(--blau); text-decoration: underline; font: inherit;
+                padding: 6px 0; cursor: pointer; }
+  .kartenrahmen { position: relative; border: 1px solid var(--rand); border-radius: 10px; overflow: hidden; background: #fff; }
+  .kartenrahmen svg { display: block; width: 100%; height: auto; touch-action: manipulation; }
+  .etage { position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,.92); border: 1px solid var(--rand);
+           border-radius: 999px; padding: 2px 10px; font-size: .8rem; font-weight: 600; }
+  .legende { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 8px 2px 0; font-size: .82rem; color: var(--grau); }
+  .legende span { display: inline-flex; align-items: center; gap: 6px; }
+  .punkt { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  .strich { width: 20px; height: 5px; border-radius: 3px; display: inline-block; }
+  .steuerung { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; margin: 12px 0 8px; }
+  .fortschritt { height: 6px; background: var(--hinter); border-radius: 3px; overflow: hidden; }
+  .fortschritt div { height: 100%; background: var(--blau); transition: width .2s; }
+  .schritt { font-size: 1.15rem; margin: 12px 0 4px; min-height: 3em; }
+  .schritt .nr { display: inline-grid; place-items: center; width: 1.8em; height: 1.8em; border-radius: 50%;
+                 background: var(--blau); color: #fff; font-weight: 700; font-size: .85em; margin-right: 8px; }
+  details { margin-top: 10px; }
+  details summary { cursor: pointer; color: var(--blau); font-weight: 600; padding: 6px 0; }
+  ol.liste { padding-left: 1.4em; margin: 6px 0 0; }
+  ol.liste li { margin: 4px 0; cursor: pointer; }
+  ol.liste li.aktiv { font-weight: 700; }
+  footer { color: var(--grau); font-size: .8rem; text-align: center; padding: 8px 16px 24px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="kopf">
+    <img src="assets/umm_logo.png" alt="Logo Universitätsmedizin Mannheim" onerror="this.remove()">
+    <h1>UMM Campus-Navigation<small>Prototyp</small></h1>
+  </div>
+</header>
+
+<main>
+  <div id="laden" class="karte">Lade Lageplan …</div>
+  <div id="ladefehler" class="fehler" hidden></div>
+
+  <div id="app" hidden>
+    <section class="karte">
+      <h2>Einschränkungen</h2>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" id="opt-rollstuhl"> ♿ Rollstuhl / Kinderwagen</label>
+        <label class="chip"><input type="checkbox" id="opt-dach"> ☂️ Überdacht</label>
+        <label class="chip"><input type="checkbox" id="opt-gross"> 🔍 Große Schrift</label>
+      </div>
+    </section>
+
+    <section class="karte">
+      <h2>Ihr Standort</h2>
+      <div id="start-qr" class="info" hidden>
+        📍 Ihr Standort (per QR-Code erkannt): <strong id="start-qr-name"></strong><br>
+        <button class="klein-link" id="start-anders">Anderen Startpunkt wählen</button>
+      </div>
+      <div id="start-wahl">
+        <div id="start-qr-unbekannt" class="warn" hidden>Der QR-Code ist unbekannt. Bitte wählen Sie Ihren Standort.</div>
+        <label class="feld" for="start-suche">🔎 Standort suchen</label>
+        <input type="search" id="start-suche" placeholder="z. B. Haupteingang" autocomplete="off">
+        <div class="hinweis" id="start-hinweis"></div>
+        <select id="start" aria-label="Ihr aktueller Standort"></select>
+      </div>
+    </section>
+
+    <section class="karte">
+      <h2>Wohin möchten Sie?</h2>
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tab-ort" aria-selected="true">📍 Nach Ort / Station</button>
+        <button role="tab" id="tab-haus" aria-selected="false">🏢 Nach Haus</button>
+      </div>
+      <div id="wahl-ort">
+        <label class="feld" for="ziel-suche">🔎 Ziel suchen (Tippfehler sind kein Problem)</label>
+        <input type="search" id="ziel-suche" placeholder="z. B. Notaufnahme" autocomplete="off">
+        <div class="hinweis" id="ziel-hinweis"></div>
+        <select id="ziel" aria-label="Ziel"></select>
+      </div>
+      <div id="wahl-haus" hidden>
+        <label class="feld" for="haus">Welches Haus?</label>
+        <select id="haus"></select>
+        <label class="feld" for="haus-ziel">Wohin im Haus?</label>
+        <select id="haus-ziel"></select>
+      </div>
+    </section>
+
+    <button class="btn haupt" id="berechnen">Route berechnen</button>
+
+    <section class="karte" id="ergebnis" hidden style="margin-top:14px">
+      <div id="ergebnis-kopf"></div>
+      <div class="kartenrahmen">
+        <div id="karte"></div>
+        <div class="etage" id="etage" hidden></div>
+      </div>
+      <div class="legende">
+        <span><i class="punkt" style="background:#00b33c"></i>Start</span>
+        <span><i class="punkt" style="background:#e60026"></i>Ziel</span>
+        <span><i class="punkt" style="background:#0057ff"></i>Aktueller Schritt</span>
+        <span><i class="strich" style="background:#e60026"></i>Route</span>
+        <span><i class="strich" style="background:#9ca3af"></i>Gelaufen</span>
+      </div>
+      <div class="steuerung">
+        <button class="btn zweit" id="zurueck">◀ Zurück</button>
+        <button class="btn zweit" id="uebersicht">Übersicht</button>
+        <button class="btn zweit" id="weiter">Weiter ▶</button>
+      </div>
+      <div class="fortschritt"><div id="fortschritt"></div></div>
+      <p class="schritt" id="schritt" aria-live="polite"></p>
+      <button class="btn zweit" id="vorlesen" hidden>🔊 Vorlesen</button>
+      <details>
+        <summary>Alle Schritte als Text</summary>
+        <ol class="liste" id="liste"></ol>
+      </details>
+    </section>
+    <div id="routefehler" class="fehler" hidden style="margin-top:14px"></div>
+  </div>
+</main>
+<footer>💡 Achten Sie unterwegs auf die Hinweisschilder der Universitätsmedizin Mannheim.</footer>
+
+<script>
+"use strict";
+// ======================================================================
+// Einstellungen (wie in core/wegkarte.py)
+// ======================================================================
+const GERADEAUS_BIS = 30;          // Grad: darunter zählt es als geradeaus
+const FAKTOR_AUSSEN = 3;           // "Überdacht": Außenwege zählen so viel länger
+const LINIENBREITE = 9, MARKER_RADIUS = 20;          // Promille der Ausschnittsbreite
+const ZOOM_RAND = 0.25, ZOOM_RAND_MIN = 0.03, ZOOM_MIN = 0.12;
+const MARKER_ABSTAND = 3.0, MARKER_MIN_FAKTOR = 0.45;
+const FARBE = { gelaufen: "#9ca3af", aktuell: "#e60026", kommend: "#ff8a00", marker: "#1f2937",
+                aktiv: "#0057ff", start: "#00b33c", ziel: "#e60026" };
+
+// ======================================================================
+// Daten laden
+// ======================================================================
+const $ = id => document.getElementById(id);
+let K = new Map();        // id -> Knoten
+let NACHBARN = new Map(); // id -> [{nach, kante}]
+let PLAN = null;          // {x, y, breite, hoehe}
+let GRUPPEN = new Map();  // Hausnummer -> {name, ziel}
+let MEHRERE_ETAGEN = false;
+
+async function ladeJson(pfad) {
+  const r = await fetch(pfad, { cache: "no-cache" });
+  if (!r.ok) throw new Error(`${pfad} nicht gefunden (${r.status})`);
+  return r.json();
+}
+
+async function start() {
+  try {
+    const [orte, kanten, plan] = await Promise.all([
+      ladeJson("data/locations.json"), ladeJson("data/edges.json"), ladeJson("data/plan.json")]);
+    baueGraph(orte, kanten);
+    PLAN = plan;
+  } catch (e) {
+    $("laden").hidden = true;
+    $("ladefehler").hidden = false;
+    $("ladefehler").textContent = "Die Daten konnten nicht geladen werden: " + e.message;
+    return;
+  }
+  $("laden").hidden = true;
+  $("app").hidden = false;
+  baueOberflaeche();
+}
+
+function baueGraph(orte, kanten) {
+  for (const o of orte) { K.set(o.id, o); NACHBARN.set(o.id, []); }
+  for (const e of kanten) {
+    if (!K.has(e.von) || !K.has(e.nach)) continue;
+    NACHBARN.get(e.von).push({ nach: e.nach, kante: e });
+    NACHBARN.get(e.nach).push({ nach: e.von, kante: e });
+  }
+  MEHRERE_ETAGEN = new Set(orte.map(o => o.etage)).size > 1;
+
+  // Häuser wie in core/ziele.py: H<Nr>_ im Label -> Haus <Nr>
+  const echte = new Map(), kandidaten = new Map();
+  for (const o of orte) {
+    if (o.kategorie === "haus") {
+      const nr = hausNr(o);
+      if (nr !== null && !echte.has(nr)) echte.set(nr, o.id);
+    }
+    if (o.haus_nr != null) {
+      if (!kandidaten.has(o.haus_nr)) kandidaten.set(o.haus_nr, []);
+      kandidaten.get(o.haus_nr).push(o);
+    }
+  }
+  const rang = o => [o.kategorie === "eingang" ? 0 : 1, String(o.etage ?? ""),
+                     o.waehlbar ? 0 : (["aufzug", "treppe"].includes(o.typ) ? 2 : 1), o.id];
+  const vergleiche = (a, b) => { const ra = rang(a), rb = rang(b);
+    for (let i = 0; i < ra.length; i++) if (ra[i] !== rb[i]) return ra[i] < rb[i] ? -1 : 1; return 0; };
+  for (const nr of new Set([...echte.keys(), ...kandidaten.keys()])) {
+    if (echte.has(nr)) GRUPPEN.set(nr, { name: K.get(echte.get(nr)).anzeige, ziel: echte.get(nr) });
+    else GRUPPEN.set(nr, { name: `Haus ${nr}`, ziel: [...kandidaten.get(nr)].sort(vergleiche)[0].id });
+  }
+}
+
+function hausNr(o) {
+  if (o.haus_nr != null) return Number(o.haus_nr);
+  const t = String(o.anzeige || "").match(/\d+/);
+  return t ? Number(t[0]) : null;
+}
+
+// ======================================================================
+// Auswahllisten
+// ======================================================================
+const sortiere = (a, b) => a.localeCompare(b, "de", { numeric: true, sensitivity: "base" });
+
+function alleOrte() {                 // dieselbe Liste für Start und Ziel
+  const liste = [];
+  for (const o of K.values()) {
+    if (!o.waehlbar || !o.kategorie) continue;
+    let name = o.anzeige;
+    if (o.kategorie !== "haus" && o.haus_nr != null && GRUPPEN.has(Number(o.haus_nr)))
+      name += ` (${GRUPPEN.get(Number(o.haus_nr)).name})`;
+    liste.push({ name, id: o.id });
+  }
+  return eindeutig(liste).sort((a, b) => sortiere(a.name, b.name));
+}
+
+function eindeutig(liste) {
+  const gesehen = new Map();
+  for (const e of liste) {
+    const n = gesehen.get(e.name) || 0;
+    gesehen.set(e.name, n + 1);
+    if (n) e.name += ` [${n + 1}]`;
+  }
+  return liste;
+}
+
+function haeuser() {
+  return [...GRUPPEN.entries()].map(([nr, g]) => ({ nr, name: g.name, id: g.ziel }))
+    .sort((a, b) => sortiere(a.name, b.name));
+}
+
+function stationenImHaus(nr) {
+  return [...K.values()].filter(o => o.waehlbar && o.kategorie !== "haus" && Number(o.haus_nr) === nr)
+    .map(o => ({ name: o.anzeige, id: o.id })).sort((a, b) => sortiere(a.name, b.name));
+}
+
+// ---- Suche mit Tippfehler-Toleranz ----
+const norm = s => String(s).toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue")
+  .replace(/ß/g, "ss").replace(/[^a-z0-9]/g, "");
+
+function abstand(a, b) {              // Levenshtein
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++)
+    for (let j = 1; j <= b.length; j++)
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return d[a.length][b.length];
+}
+
+function trefferwert(suche, name) {
+  const q = norm(suche), n = norm(name);
+  if (!q) return 0;
+  if (n.includes(q)) return n.startsWith(q) ? 0 : 0.5;
+  let best = Infinity;                  // bestes Teilstück gleicher Länge
+  for (let i = 0; i + q.length <= n.length; i++) best = Math.min(best, abstand(q, n.slice(i, i + q.length)));
+  if (n.length < q.length) best = abstand(q, n);
+  return best <= Math.max(1, Math.floor(q.length / 4)) ? 1 + best : Infinity;
+}
+
+function fuelleSelect(sel, liste, behalteId) {
+  sel.innerHTML = "";
+  for (const e of liste) sel.add(new Option(e.name, e.id));
+  if (behalteId && liste.some(e => e.id === behalteId)) sel.value = behalteId;
+}
+
+function verbindeSuche(input, sel, hinweis, liste) {
+  input.addEventListener("input", () => {
+    const text = input.value.trim();
+    if (!text) { fuelleSelect(sel, liste, sel.value); hinweis.textContent = ""; return; }
+    const treffer = liste.map(e => ({ e, w: trefferwert(text, e.name) }))
+      .filter(t => t.w < Infinity).sort((a, b) => a.w - b.w || sortiere(a.e.name, b.e.name)).map(t => t.e);
+    if (treffer.length) {
+      fuelleSelect(sel, treffer);
+      hinweis.textContent = `✅ ${treffer.length} Treffer – bitte unten bestätigen.`;
+    } else {
+      fuelleSelect(sel, liste, sel.value);
+      hinweis.textContent = "Nichts Passendes gefunden. Bitte wählen Sie aus der Liste.";
+    }
+    sel.dispatchEvent(new Event("change"));
+  });
+}
+
+// ======================================================================
+// Routing (Dijkstra)
+// ======================================================================
+function optionen() {
+  return { rollstuhl: $("opt-rollstuhl").checked, dach: $("opt-dach").checked };
+}
+
+function gewicht(kante, opt) {
+  if (opt.rollstuhl && kante.barrierefrei === false) return null;     // gesperrt
+  let w = Number(kante.meter) || 0;
+  if (opt.dach && kante.bereich === "aussen") w *= FAKTOR_AUSSEN;
+  return w;
+}
+
+function dijkstra(startId, opt) {
+  const dist = new Map([[startId, 0]]), vor = new Map(), fertig = new Set();
+  const offen = [startId];
+  while (offen.length) {
+    let bi = 0;
+    for (let i = 1; i < offen.length; i++) if (dist.get(offen[i]) < dist.get(offen[bi])) bi = i;
+    const u = offen.splice(bi, 1)[0];
+    if (fertig.has(u)) continue;
+    fertig.add(u);
+    for (const { nach, kante } of NACHBARN.get(u) || []) {
+      const w = gewicht(kante, opt);
+      if (w === null || fertig.has(nach)) continue;
+      const neu = dist.get(u) + w;
+      if (!dist.has(nach) || neu < dist.get(nach)) { dist.set(nach, neu); vor.set(nach, u); offen.push(nach); }
+    }
+  }
+  return { dist, vor };
+}
+
+function kanteZwischen(a, b) {
+  return (NACHBARN.get(a) || []).find(n => n.nach === b)?.kante;
+}
+
+function berechneRoute(startId, zielId, opt) {
+  if (startId === zielId) return { pfad: [startId], meter: 0, aussen: 0 };
+  const { vor } = dijkstra(startId, opt);
+  if (!vor.has(zielId)) return null;
+  const pfad = [zielId];
+  while (pfad[0] !== startId) pfad.unshift(vor.get(pfad[0]));
+  let meter = 0, aussen = 0;
+  for (let i = 0; i + 1 < pfad.length; i++) {
+    const k = kanteZwischen(pfad[i], pfad[i + 1]);
+    meter += Number(k.meter) || 0;
+    if (k.bereich === "aussen") aussen += Number(k.meter) || 0;
+  }
+  return { pfad, meter, aussen };
+}
+
+function naechsterPunktImHaus(startId, nr, opt) {      // "Nur zum Eingang": schnellster Punkt des Hauses
+  const { dist } = dijkstra(startId, opt);
+  const imHaus = [...K.values()].filter(o => Number(o.haus_nr) === nr && o.id !== startId && dist.has(o.id));
+  // Vorrang: Eingänge > auswählbare Ziele > sonstige Punkte > Aufzug/Treppe
+  const stufen = [o => o.kategorie === "eingang", o => o.waehlbar,
+                  o => !["aufzug", "treppe"].includes(o.typ), () => true];
+  for (const passt of stufen) {
+    const kand = imHaus.filter(passt);
+    if (kand.length) return kand.reduce((a, b) => dist.get(b.id) < dist.get(a.id) ? b : a).id;
+  }
+  return GRUPPEN.get(nr).ziel;
+}
+
+// ======================================================================
+// Schritte (gleiche Logik wie core/wegkarte.py)
+// ======================================================================
+const xy = id => [Number(K.get(id).x), Number(K.get(id).y)];
+
+function winkel(a, b, c) {
+  const [ax, ay] = xy(a), [bx, by] = xy(b), [cx, cy] = xy(c);
+  if (Math.hypot(bx - ax, by - ay) < 1e-6 || Math.hypot(cx - bx, cy - by) < 1e-6) return 0;
+  const w = (Math.atan2(cy - by, cx - bx) - Math.atan2(by - ay, bx - ax)) * 180 / Math.PI;
+  return ((w + 180) % 360 + 360) % 360 - 180;          // + = rechts (y zeigt nach unten)
+}
+
+const etagenwechsel = (a, b) => K.get(a).etage !== K.get(b).etage;
+
+function grenzenVon(pfad) {
+  const wende = [];
+  for (let i = 1; i < pfad.length - 1; i++) {
+    if (etagenwechsel(pfad[i - 1], pfad[i])) continue;          // gerade aus Aufzug/Treppe gekommen
+    if (etagenwechsel(pfad[i], pfad[i + 1]) || Math.abs(winkel(pfad[i - 1], pfad[i], pfad[i + 1])) > GERADEAUS_BIS)
+      wende.push(i);
+  }
+  return [0, ...wende, pfad.length - 1];
+}
+
+function meterZwischen(pfad, von, bis, nurEbene) {
+  let m = 0;
+  for (let i = von; i < bis; i++) {
+    if (nurEbene && etagenwechsel(pfad[i], pfad[i + 1])) continue;
+    m += Number(kanteZwischen(pfad[i], pfad[i + 1]).meter) || 0;
+  }
+  return m;
+}
+
+const fett = s => `<strong>${escape(s)}</strong>`;
+const escape = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const etageText = (id, name = "") => (MEHRERE_ETAGEN && K.get(id).etage_name && !name.includes(K.get(id).etage_name))
+  ? `, ${K.get(id).etage_name}` : "";
+const metertext = m => `ca. ${Math.max(1, Math.round(m))} m`;
+
+function baueSchritte(route, startName, zielName) {
+  const p = route.pfad;
+  if (p.length < 2) return [{ marker: p[0], von: 0, bis: 0, art: "ziel",
+                              text: `Sie sind bereits am Ziel: ${fett(zielName)}.` }];
+  const g = grenzenVon(p);
+  const schritte = [{ marker: p[0], von: 0, bis: g[1], art: "start",
+    text: (K.get(p[0]).waehlbar ? `Starten Sie bei ${fett(startName)}${etageText(p[0], startName)}`
+                                : `Starten Sie an Ihrem Standort`) +
+          ` und folgen Sie dem Weg ${metertext(meterZwischen(p, 0, g[1], true))}.` }];
+  for (let k = 1; k < g.length - 1; k++) {
+    const i = g[k], m = meterZwischen(p, i, g[k + 1], true);
+    const ort = K.get(p[i]);
+    let text;
+    if (etagenwechsel(p[i], p[i + 1])) {
+      const mittel = ort.typ === "aufzug" ? "den Aufzug" : ort.typ === "treppe" ? "die Treppe" : "den Übergang";
+      const zielEtage = K.get(p[i + 1]).etage_name || `Ebene ${K.get(p[i + 1]).etage}`;
+      text = `Nehmen Sie ${mittel} ins ${fett(zielEtage)}.` + (m > 0 ? ` Gehen Sie dort ${metertext(m)} weiter.` : "");
+    } else {
+      const w = winkel(p[i - 1], p[i], p[i + 1]), seite = w > 0 ? "rechts" : "links";
+      const bei = ort.waehlbar ? ` bei ${fett(ort.anzeige)}` : "";
+      const aktion = Math.abs(w) >= 150 ? `Drehen Sie${bei} um`
+                   : Math.abs(w) < 60 ? `Halten Sie sich${bei} ${seite}` : `Biegen Sie${bei} ${seite} ab`;
+      text = `${aktion} und gehen Sie ${metertext(m)}.`;
+    }
+    schritte.push({ marker: p[i], von: i, bis: g[k + 1], art: "weg", text });
+  }
+  schritte.push({ marker: p[p.length - 1], von: g[g.length - 2], bis: g[g.length - 1], art: "ziel",
+    text: `Sie haben Ihr Ziel erreicht: ${fett(zielName)}${etageText(p[p.length - 1], zielName)}.` });
+  return schritte;
+}
+
+// ======================================================================
+// Karte (SVG, wie core/wegkarte.py)
+// ======================================================================
+function ausschnitt(ids) {
+  const xs = ids.map(id => xy(id)[0]), ys = ids.map(id => xy(id)[1]);
+  const P = PLAN, ausd = Math.max(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys));
+  const rand = Math.max(ausd * ZOOM_RAND, P.breite * ZOOM_RAND_MIN);
+  let x0 = Math.min(...xs) - rand, y0 = Math.min(...ys) - rand;
+  let b = Math.max(...xs) + rand - x0, h = Math.max(...ys) + rand - y0;
+  const verh = P.breite / P.hoehe;
+  if (b / h < verh) { const nb = h * verh; x0 -= (nb - b) / 2; b = nb; }
+  else { const nh = b / verh; y0 -= (nh - h) / 2; h = nh; }
+  if (b < P.breite * ZOOM_MIN) {
+    x0 -= (P.breite * ZOOM_MIN - b) / 2; y0 -= (P.hoehe * ZOOM_MIN - h) / 2;
+    b = P.breite * ZOOM_MIN; h = P.hoehe * ZOOM_MIN;
+  }
+  b = Math.min(b, P.breite); h = Math.min(h, P.hoehe);
+  x0 = Math.min(Math.max(x0, P.x), P.x + P.breite - b);
+  y0 = Math.min(Math.max(y0, P.y), P.y + P.hoehe - h);
+  return [x0, y0, b, h];
+}
+
+function linie(ids, farbe, breite) {
+  if (ids.length < 2) return "";
+  // an Etagenwechseln unterbrechen (Aufzug/Treppe liegen übereinander)
+  const teile = [[ids[0]]];
+  for (let i = 1; i < ids.length; i++) {
+    if (etagenwechsel(ids[i - 1], ids[i])) teile.push([]);
+    teile[teile.length - 1].push(ids[i]);
+  }
+  return teile.filter(t => t.length > 1).map(t =>
+    `<polyline points="${t.map(id => xy(id).join(",")).join(" ")}" fill="none" stroke="${farbe}" ` +
+    `stroke-width="${breite}" stroke-linecap="round" stroke-linejoin="round"/>`).join("");
+}
+
+function zeichneKarte(route, schritte, aktiv) {        // aktiv: Index oder null = Übersicht
+  const p = route.pfad;
+  const vb = aktiv === null ? ausschnitt(p)
+           : ausschnitt(p.slice(schritte[aktiv].von, schritte[aktiv].bis + 1));
+  const s = vb[2] / 1000;
+  let teile = "";
+  if (aktiv === null) teile += linie(p, FARBE.aktuell, LINIENBREITE * s);
+  else {
+    const a = schritte[aktiv];
+    teile += linie(p.slice(0, a.von + 1), FARBE.gelaufen, LINIENBREITE * s);
+    teile += linie(p.slice(a.bis), FARBE.kommend, LINIENBREITE * s);
+    teile += linie(p.slice(a.von, a.bis + 1), FARBE.aktuell, (LINIENBREITE + 3) * s);
+  }
+  // Kreise: bei Häufung im Ausschnitt gemeinsam verkleinern
+  const sichtbar = schritte.map(st => xy(st.marker))
+    .filter(([x, y]) => x >= vb[0] && x <= vb[0] + vb[2] && y >= vb[1] && y <= vb[1] + vb[3]);
+  const rBasis = MARKER_RADIUS * s;
+  let minAbst = Infinity;
+  for (let i = 0; i < sichtbar.length; i++) for (let j = i + 1; j < sichtbar.length; j++) {
+    const d = Math.hypot(sichtbar[i][0] - sichtbar[j][0], sichtbar[i][1] - sichtbar[j][1]);
+    if (d > 1e-6) minAbst = Math.min(minAbst, d);
+  }
+  const faktor = minAbst === Infinity ? 1 : Math.max(MARKER_MIN_FAKTOR, Math.min(1, minAbst / (MARKER_ABSTAND * rBasis)));
+  const reihenfolge = schritte.map((st, i) => i).sort((a, b) => (a === aktiv) - (b === aktiv));
+  for (const i of reihenfolge) {
+    const st = schritte[i], [x, y] = xy(st.marker);
+    let farbe = FARBE.marker, r = 1;
+    if (i === aktiv) { farbe = FARBE.aktiv; r = 1.4; }
+    else if (st.art === "start") { farbe = FARBE.start; r = 1.2; }
+    else if (st.art === "ziel") { farbe = FARBE.ziel; r = 1.2; }
+    else if (aktiv !== null && i < aktiv) farbe = FARBE.gelaufen;
+    r *= rBasis * faktor;
+    const schrift = r * 1.05;
+    teile += `<g><circle cx="${x}" cy="${y}" r="${r}" fill="${farbe}" stroke="#fff" stroke-width="${3 * s * faktor}"/>` +
+      `<text x="${x}" y="${y + schrift * 0.36}" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" ` +
+      `font-size="${schrift}" font-weight="bold">${i + 1}</text></g>`;
+  }
+  const P = PLAN;
+  $("karte").innerHTML =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb.join(" ")}" role="img" aria-label="Lageplan mit Route">` +
+    `<defs><filter id="nebel"><feColorMatrix type="saturate" values="0.3"/>` +
+    `<feComponentTransfer><feFuncR type="linear" slope="0.65" intercept="0.35"/><feFuncG type="linear" slope="0.65" intercept="0.35"/>` +
+    `<feFuncB type="linear" slope="0.65" intercept="0.35"/></feComponentTransfer></filter></defs>` +
+    `<rect x="${P.x}" y="${P.y}" width="${P.breite}" height="${P.hoehe}" fill="#fff"/>` +
+    `<image href="plan.svg" x="${P.x}" y="${P.y}" width="${P.breite}" height="${P.hoehe}" preserveAspectRatio="none" filter="url(#nebel)"/>` +
+    teile + `</svg>`;
+  const etagenId = aktiv === null ? p[0] : schritte[aktiv].marker;
+  $("etage").hidden = !MEHRERE_ETAGEN;
+  $("etage").textContent = K.get(etagenId).etage_name || "";
+}
+
+// ======================================================================
+// Oberfläche
+// ======================================================================
+let ROUTE = null, SCHRITTE = [], AKTIV = null, ZIELNAME = "", STARTNAME = "";
+let STARTLISTE = [], ZIELLISTE = [];
+
+function standortText(id) {
+  const o = K.get(id);
+  if (o.waehlbar) return o.anzeige;
+  const { dist } = dijkstra(id, { rollstuhl: false, dach: false });
+  let best = null;
+  for (const [nid, d] of dist) if (nid !== id && K.get(nid).waehlbar && (!best || d < dist.get(best))) best = nid;
+  const wo = [o.haus_nr != null && GRUPPEN.has(Number(o.haus_nr)) ? GRUPPEN.get(Number(o.haus_nr)).name : "",
+              MEHRERE_ETAGEN ? o.etage_name : ""].filter(Boolean).join(", ");
+  if (!best) return o.anzeige;
+  return `Nahe ${K.get(best).anzeige} (ca. ${Math.round(dist.get(best))} m)` + (wo ? `, ${wo}` : "");
+}
+
+function baueOberflaeche() {
+  STARTLISTE = alleOrte();
+  ZIELLISTE = alleOrte().map(e => ({ ...e }));
+  fuelleSelect($("start"), STARTLISTE);
+  fuelleSelect($("ziel"), ZIELLISTE);
+  if (ZIELLISTE.length > 1) $("ziel").selectedIndex = 1;
+  verbindeSuche($("start-suche"), $("start"), $("start-hinweis"), STARTLISTE);
+  verbindeSuche($("ziel-suche"), $("ziel"), $("ziel-hinweis"), ZIELLISTE);
+
+  const hausListe = haeuser();
+  fuelleSelect($("haus"), hausListe.map(h => ({ name: h.name, id: String(h.nr) })));
+  if (!hausListe.length) $("tab-haus").hidden = true;
+  const fuelleHausZiele = () => {
+    const nr = Number($("haus").value), name = $("haus").selectedOptions[0]?.text || "";
+    fuelleSelect($("haus-ziel"), [{ name: `– Nur zum Eingang von ${name} –`, id: "__eingang__" },
+                                  ...stationenImHaus(nr)]);
+  };
+  $("haus").addEventListener("change", fuelleHausZiele);
+  fuelleHausZiele();
+
+  // QR-Code: ?start=<Knoten-ID>
+  const qr = new URLSearchParams(location.search).get("start");
+  if (qr && K.has(qr)) {
+    $("start-qr").hidden = false; $("start-wahl").hidden = true;
+    $("start-qr-name").textContent = standortText(qr);
+  } else if (qr) $("start-qr-unbekannt").hidden = false;
+  $("start-anders").onclick = () => {
+    history.replaceState(null, "", location.pathname);
+    $("start-qr").hidden = true; $("start-wahl").hidden = false;
+  };
+
+  const setzeTab = haus => {
+    $("tab-ort").setAttribute("aria-selected", !haus); $("tab-haus").setAttribute("aria-selected", haus);
+    $("wahl-ort").hidden = haus; $("wahl-haus").hidden = !haus;
+  };
+  $("tab-ort").onclick = () => setzeTab(false);
+  $("tab-haus").onclick = () => setzeTab(true);
+
+  $("opt-gross").onchange = () => document.body.classList.toggle("gross", $("opt-gross").checked);
+  $("berechnen").onclick = berechne;
+  $("zurueck").onclick = () => zeigeSchritt(AKTIV === null ? 0 : Math.max(0, AKTIV - 1));
+  $("weiter").onclick = () => zeigeSchritt(AKTIV === null ? 0 : Math.min(SCHRITTE.length - 1, AKTIV + 1));
+  $("uebersicht").onclick = () => zeigeSchritt(null);
+  if ("speechSynthesis" in window) $("vorlesen").hidden = false;
+  $("vorlesen").onclick = vorlesen;
+}
+
+function aktuelleStartId() {
+  const qr = new URLSearchParams(location.search).get("start");
+  if (qr && K.has(qr) && !$("start-qr").hidden) return qr;
+  return $("start").value;
+}
+
+function berechne() {
+  $("routefehler").hidden = true;
+  const opt = optionen(), startId = aktuelleStartId();
+  STARTNAME = !$("start-qr").hidden ? $("start-qr-name").textContent : $("start").selectedOptions[0]?.text;
+  let zielId;
+  if ($("wahl-haus").hidden) {
+    zielId = $("ziel").value; ZIELNAME = $("ziel").selectedOptions[0]?.text;
+  } else {
+    const nr = Number($("haus").value), hausName = $("haus").selectedOptions[0]?.text;
+    if ($("haus-ziel").value === "__eingang__") {
+      if (Number(K.get(startId)?.haus_nr) === nr) return fehler(`📍 Sie befinden sich bereits in ${hausName}.`, true);
+      zielId = naechsterPunktImHaus(startId, nr, opt); ZIELNAME = hausName;
+    } else {
+      zielId = $("haus-ziel").value; ZIELNAME = `${$("haus-ziel").selectedOptions[0]?.text} (${hausName})`;
+    }
+  }
+  if (!startId || !zielId) return fehler("Bitte Start und Ziel wählen.");
+  ROUTE = berechneRoute(startId, zielId, opt);
+  if (!ROUTE) {
+    return fehler(opt.rollstuhl ? "Keine barrierefreie Route gefunden. Bitte wenden Sie sich an die Information."
+                                : "Keine Route gefunden. Bitte wenden Sie sich an die Information.");
+  }
+  SCHRITTE = baueSchritte(ROUTE, STARTNAME, ZIELNAME);
+  let kopf = `<div class="erfolg">Route zu ${fett(ZIELNAME)} – ${metertext(ROUTE.meter)}</div>`;
+  if (opt.dach && ROUTE.aussen > 0)
+    kopf += `<div class="warn" style="margin:-4px 0 12px">☂️ Enthält ${metertext(ROUTE.aussen)} nicht überdachten Weg (ließ sich nicht vermeiden).</div>`;
+  $("ergebnis-kopf").innerHTML = kopf;
+  $("liste").innerHTML = SCHRITTE.map((s, i) => `<li data-i="${i}">${s.text}</li>`).join("");
+  $("liste").querySelectorAll("li").forEach(li => li.onclick = () => zeigeSchritt(Number(li.dataset.i)));
+  $("ergebnis").hidden = false;
+  zeigeSchritt(null);
+  $("ergebnis").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function fehler(text, nurInfo) {
+  $("ergebnis").hidden = true;
+  const box = $("routefehler");
+  box.hidden = false; box.className = nurInfo ? "info" : "fehler"; box.style.marginTop = "14px";
+  box.textContent = text;
+}
+
+function zeigeSchritt(i) {
+  AKTIV = i;
+  zeichneKarte(ROUTE, SCHRITTE, i);
+  const n = SCHRITTE.length;
+  $("schritt").innerHTML = i === null
+    ? `Übersicht: ${n} Schritte. Tippen Sie auf <strong>Weiter ▶</strong> für die Wegbeschreibung.`
+    : `<span class="nr">${i + 1}</span>${SCHRITTE[i].text}`;
+  $("fortschritt").style.width = (i === null ? 0 : ((i + 1) / n) * 100) + "%";
+  $("zurueck").disabled = i === null || i === 0;
+  $("weiter").disabled = i !== null && i === n - 1;
+  $("liste").querySelectorAll("li").forEach((li, k) => li.classList.toggle("aktiv", k === i));
+}
+
+function vorlesen() {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance($("schritt").textContent.replace(/^\d+/, ""));
+  u.lang = "de-DE";
+  speechSynthesis.speak(u);
+}
+
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost"))
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+start();
+</script>
+</body>
+</html>
